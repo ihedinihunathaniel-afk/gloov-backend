@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GLOOV - Live</title>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:sans-serif}
+.top-bar{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:12px;background:rgba(0,0,0,0.8);z-index:10}
+.profile-top{width:35px;height:35px;border-radius:50%;background:#ff0050}
+.room-feed{padding-top:60px}
+.user-card{position:relative;height:85vh;border-bottom:1px solid #222;display:flex;align-items:flex-end;padding:20px;background:linear-gradient(transparent, #000)}
+.avatar-side{position:absolute;right:15px;bottom:120px;text-align:center}
+.avatar{width:60px;height:60px;border-radius:50%;border:2px solid #fff;background:#444;display:block}
+.plus-btn{width:22px;height:22px;background:#ff0050;border-radius:50%;margin:-10px auto 10px;display:flex;align-items:center;justify-content:center;font-weight:bold;cursor:pointer}
+.icon-btn{margin:15px 0;font-size:28px;cursor:pointer}
+.love-btn{color:#ff0050}
+.followed{background:#fff !important;color:#000}
+.bottom-nav{position:fixed;bottom:0;width:100%;display:flex;justify-content:space-around;padding:12px;background:#000;border-top:1px solid #222}
+</style>
+</head>
+<body>
+<div class="top-bar">
+<div>Following | <b>For You - GLOOV</b></div>
+<div class="profile-top"></div>
+</div>
+
+<div class="room-feed">
+<div class="user-card" style="background:#111">
+<div>
+<h3>@gloov_queen ❤️</h3>
+<p>Live in Love Lounge - Come chat! #GLOOV</p>
+</div>
+<div class="avatar-side">
+<img class="avatar" src="https://i.pravatar.cc/100?img=5">
+<div class="plus-btn" onclick="this.innerText='✓';this.classList.add('followed')">+</div>
+<div class="icon-btn love-btn">❤️ 12.3k</div>
+<div class="icon-btn">💬 2k</div>
+<div class="icon-btn">🎙️</div>
+<div class="icon-btn">🎁</div>
+</div>
+</div>
+
+<div class="user-card" style="background:#222">
+<div>
+<h3>@music_vibes 🎵</h3>
+<p>Voice room active! Join now 🔊</p>
+</div>
+<div class="avatar-side">
+<img class="avatar" src="https://i.pravatar.cc/100?img=8">
+<div class="plus-btn" onclick="this.innerText='✓';this.classList.add('followed')">+</div>
+<div class="icon-btn love-btn">❤️ 8.1k</div>
+<div class="icon-btn">💬 890</div>
+<div class="icon-btn">🎙️</div>
+</div>
+</div>
+</div>
+
+<div class="bottom-nav">
+<span>🏠</span><span>🔍</span><span style="font-size:32px">➕</span><span>💬</span><span>👤</span>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+const socket = io(window.location.origin);
+socket.on('connect', ()=> console.log('GLOOV LIVE'));
+function toggleFollow(el){
+ el.innerText = el.innerText==='+' ? '✓' : '+';
+}
+</script>
+</body>
+</html>
